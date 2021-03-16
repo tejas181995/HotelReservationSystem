@@ -9,7 +9,7 @@ public class Hotel {
     public Hotel(String hotelName, int weekDayRate , int weekEndRate) {
         this.hotelName = hotelName;
         this.weekDayRate = weekDayRate;
-        this.weekEndRate = this.weekEndRate;
+        this.weekEndRate = weekEndRate;
     }
 
     @Override

@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 
-import static com.bridgelabz.hotelmanagement.HotelManagement.hotels;
+import static com.bridgelabz.hotelmanagement.HotelManagement.*;
 
 public class TestHotelManagement {
     HotelManagement hotelManagement;
@@ -32,9 +32,9 @@ public class TestHotelManagement {
     }
 
     @Test
-    void getcheapestHotel() {
-        long rate = hotelManagement.getCheapHotel(LocalDate.parse("2020-10-10"), LocalDate.parse("2020-10-11"));
-        Assertions.assertEquals(220, rate);
+    public void getCheapestHotel() {
+      Assertions.assertEquals(lakewood, getCheapHotel());
+      showCheapHotel();
 
     }
 }
