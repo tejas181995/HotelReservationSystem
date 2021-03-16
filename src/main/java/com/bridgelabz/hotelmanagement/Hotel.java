@@ -2,16 +2,19 @@ package com.bridgelabz.hotelmanagement;
 
 public class Hotel {
     String hotelName;
-    int rate;
+    int weekDayRate;
+    int weekEndRate;
 
-    public Hotel(String hotelName, int rate) {
+
+    public Hotel(String hotelName, int weekDayRate , int weekEndRate) {
         this.hotelName = hotelName;
-        this.rate = rate;
+        this.weekDayRate = weekDayRate;
+        this.weekEndRate = this.weekEndRate;
     }
 
     @Override
     public String toString() {
-        return hotelName + " " + rate ;
+        return hotelName + " " + weekDayRate;
     }
 
 }

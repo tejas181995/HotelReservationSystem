@@ -5,15 +5,14 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 import static com.bridgelabz.hotelmanagement.HotelManagement.hotels;
 
 public class TestHotelManagement {
     HotelManagement hotelManagement;
-    Hotel lakewood = new Hotel("Lakewood", 110);
-    Hotel bridgewood = new Hotel("Bridgewood", 150);
-    Hotel ridgewood = new Hotel("Ridgewood", 220 );
+    Hotel lakewood = new Hotel("Lakewood", 110, 90);
+    Hotel bridgewood = new Hotel("Bridgewood", 150, 50);
+    Hotel ridgewood = new Hotel("Ridgewood", 220 , 150);
     @BeforeEach
     void setUp() {
         hotelManagement = new HotelManagement();
