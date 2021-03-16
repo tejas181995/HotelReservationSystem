@@ -37,9 +37,15 @@ public class TestHotelManagement {
     }
 
     @Test
-    void getCheapestHotelByRatingsTest() {
+    public void getCheapestHotelByRatingsTest() {
        Hotel  cheapestHotelByRatings = HotelManagement.getCheapestHotelByRating();
        Assertions.assertEquals(bridgewood, cheapestHotelByRatings);
         System.out.println("Cheapest hotel by rating: " + cheapestHotelByRatings.hotelName);
+    }
+
+    @Test
+    public void getBestRatedHotelTest() {
+        Assertions.assertEquals(ridgewood, getBestRatedHotel());
+        System.out.println("Best rated Hotel: " + getBestRatedHotel().hotelName + "  total Rate:  "  + getTotalRates(getBestRatedHotel()) );
     }
 }

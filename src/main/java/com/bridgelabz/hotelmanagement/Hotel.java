@@ -4,7 +4,7 @@ public class Hotel {
     public String hotelName;
     int weekDayRate;
     int weekEndRate;
-    int ratings;
+    public int ratings;
 
 
     public Hotel(String hotelName, int weekDayRate , int weekEndRate, int ratings) {
