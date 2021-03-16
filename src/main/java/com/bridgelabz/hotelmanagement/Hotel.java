@@ -13,4 +13,5 @@ public class Hotel {
     public String toString() {
         return hotelName + " " + rate ;
     }
+
 }

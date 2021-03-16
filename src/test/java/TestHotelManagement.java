@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import static com.bridgelabz.hotelmanagement.HotelManagement.hotels;
@@ -16,17 +17,25 @@ public class TestHotelManagement {
     @BeforeEach
     void setUp() {
         hotelManagement = new HotelManagement();
+        hotelManagement.addHotel(lakewood);
+        hotelManagement.addHotel(bridgewood);
+        hotelManagement.addHotel(ridgewood);
+
     }
 
     @Test
     public void testAddHotel() {
-        hotelManagement.addHotel(lakewood);
-        hotelManagement.addHotel(bridgewood);
-        hotelManagement.addHotel(ridgewood);
         Assertions.assertTrue(hotels.contains(lakewood));
         Assertions.assertTrue(hotels.contains(bridgewood));
         Assertions.assertTrue(hotels.contains(ridgewood));
 
-        hotels.forEach(hotel -> System.out.println("added in list: " + hotel));
+       hotels.forEach(hotel -> System.out.println("added in list: " + hotel));
+    }
+
+    @Test
+    void getcheapestHotel() {
+        long rate = hotelManagement.getCheapHotel(LocalDate.parse("2020-10-10"), LocalDate.parse("2020-10-11"));
+        Assertions.assertEquals(220, rate);
+
     }
 }
