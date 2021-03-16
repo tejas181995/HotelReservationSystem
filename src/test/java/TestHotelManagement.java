@@ -10,9 +10,9 @@ import static com.bridgelabz.hotelmanagement.HotelManagement.*;
 
 public class TestHotelManagement {
     HotelManagement hotelManagement;
-    Hotel lakewood = new Hotel("Lakewood", 110, 90);
-    Hotel bridgewood = new Hotel("Bridgewood", 150, 50);
-    Hotel ridgewood = new Hotel("Ridgewood", 220 , 150);
+    Hotel lakewood = new Hotel("Lakewood", 110, 90, 3);
+    Hotel bridgewood = new Hotel("Bridgewood", 150, 50, 4);
+    Hotel ridgewood = new Hotel("Ridgewood", 220 , 150, 5);
     @BeforeEach
     void setUp() {
         hotelManagement = new HotelManagement();

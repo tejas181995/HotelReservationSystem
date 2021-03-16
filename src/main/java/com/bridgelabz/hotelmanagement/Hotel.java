@@ -4,12 +4,14 @@ public class Hotel {
     String hotelName;
     int weekDayRate;
     int weekEndRate;
+    int ratings;
 
 
-    public Hotel(String hotelName, int weekDayRate , int weekEndRate) {
+    public Hotel(String hotelName, int weekDayRate , int weekEndRate, int ratings) {
         this.hotelName = hotelName;
         this.weekDayRate = weekDayRate;
         this.weekEndRate = weekEndRate;
+        this.ratings = ratings;
     }
 
     @Override
