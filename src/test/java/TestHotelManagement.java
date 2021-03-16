@@ -4,8 +4,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDate;
-
 import static com.bridgelabz.hotelmanagement.HotelManagement.*;
 
 public class TestHotelManagement {
@@ -32,9 +30,16 @@ public class TestHotelManagement {
     }
 
     @Test
-    public void getCheapestHotel() {
-      Assertions.assertEquals(lakewood, getCheapHotel());
+    public void getCheapestHotelByRates() {
+      Assertions.assertEquals(lakewood, getCheapHotelByRate());
       showCheapHotel();
 
+    }
+
+    @Test
+    void getCheapestHotelByRatingsTest() {
+       Hotel  cheapestHotelByRatings = HotelManagement.getCheapestHotelByRating();
+       Assertions.assertEquals(bridgewood, cheapestHotelByRatings);
+        System.out.println("Cheapest hotel by rating: " + cheapestHotelByRatings.hotelName);
     }
 }

@@ -1,7 +1,7 @@
 package com.bridgelabz.hotelmanagement;
 
 public class Hotel {
-    String hotelName;
+    public String hotelName;
     int weekDayRate;
     int weekEndRate;
     int ratings;

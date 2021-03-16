@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.time.*;
 import java.util.TreeMap;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class HotelManagement {
     public static ArrayList<Hotel> hotels = new ArrayList<>();
@@ -11,7 +13,7 @@ public class HotelManagement {
         hotels.add(hotel);
         return hotels;
     }
-    public static Hotel getCheapHotel(){
+    public static Hotel getCheapHotelByRate(){
         return Collections.min(hotels, ((hotel1, hotel2) -> ((Integer) hotel1.weekDayRate).compareTo((Integer) hotel2.weekDayRate)));
     }
     public static TreeMap<Long, ArrayList<Hotel>> weekEndWeekDaysRates(LocalDate d1, LocalDate d2 ){
@@ -48,6 +50,16 @@ public class HotelManagement {
         }
         System.out.println("with rate: "+ minRate);
     }
+    public static Hotel getCheapestHotelByRating(){
+        LocalDate d1 = LocalDate.parse("2020-09-11");
+        LocalDate d2 = LocalDate.parse("2020-09-12");
+        TreeMap<Long, ArrayList<Hotel>> hotelRates = weekEndWeekDaysRates(d1, d2);
+        long minRate = hotelRates.keySet().stream().min(Long::compare).get();
+        return hotelRates.get(minRate).stream().max((h1, h2 ) -> ((Integer)h1.ratings).compareTo(((Integer)h2.ratings))).get();
+
+    }
+
+
 }
 
 
