@@ -61,4 +61,10 @@ public class TestHotelManagement {
     public void invalidCustomerTypeTest1() throws InvalidDataException {
         Assertions.assertThrows(InvalidDataException.class, ()->{getCheapHotelByRate(3);} );
     }
+
+    @Test
+    void cheapestBestratedHotelSpecialCustTest() throws InvalidDataException {
+        Assertions.assertEquals(ridgewood, getCheapestHotelByRating(Hotel.LOYAL_CUSTOMER));
+        showCheapHotel(Hotel.LOYAL_CUSTOMER);
+    }
 }
