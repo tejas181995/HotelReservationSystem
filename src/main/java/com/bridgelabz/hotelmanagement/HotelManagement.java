@@ -15,10 +15,14 @@ public class HotelManagement {
         hotels.add(hotel);
         return hotels;
     }
-    public static Hotel getCheapHotelByRate(int customerType){
+    public static Hotel getCheapHotelByRate(int customerType) throws InvalidDataException {
+        if(customerType < 0 || customerType >= 2)
+            throw new InvalidDataException();
         return Collections.min(hotels, ((hotel1, hotel2) -> ((Integer) hotel1.weekDayRate[customerType]).compareTo((Integer) hotel2.weekDayRate[customerType])));
     }
-    public static long getTotalRates( Hotel hotel, int customerType){
+    public static long getTotalRates( Hotel hotel, int customerType) throws InvalidDataException {
+        if(d1.compareTo(d2) > 0 || customerType < 0 || customerType >= 2)
+            throw new InvalidDataException();
         long rate = 0;
         LocalDate dx = d2;
         dx = dx.plusDays(1);
@@ -32,7 +36,9 @@ public class HotelManagement {
         }
         return rate;
     }
-    public static TreeMap<Long, ArrayList<Hotel>> weekEndWeekDaysRates(int customerType){
+    public static TreeMap<Long, ArrayList<Hotel>> weekEndWeekDaysRates(int customerType) throws InvalidDataException {
+        if(customerType < 0 || customerType >= 2)
+            throw new InvalidDataException();
         TreeMap<Long, ArrayList<Hotel>> hotelRates = new TreeMap<>();
         for (Hotel hotel: hotels){
             long rate = getTotalRates(hotel, customerType);
@@ -47,8 +53,9 @@ public class HotelManagement {
         return hotelRates;
 
     }
-    public static void showCheapHotel(int customerType ){
-
+    public static void showCheapHotel(int customerType ) throws InvalidDataException {
+        if( customerType < 0 || customerType >= 2)
+            throw new InvalidDataException();
         TreeMap<Long, ArrayList<Hotel>> hotelRates = weekEndWeekDaysRates(customerType);
         System.out.print("\ncheapest hotels are " );
         long minRate = hotelRates.keySet().stream().min(Long::compare).get();
@@ -57,7 +64,7 @@ public class HotelManagement {
         }
         System.out.println("with rate: "+ minRate);
     }
-    public static Hotel getCheapestHotelByRating(int customerType){
+    public static Hotel getCheapestHotelByRating(int customerType) throws InvalidDataException {
 
         TreeMap<Long, ArrayList<Hotel>> hotelRates = weekEndWeekDaysRates(customerType);
         long minRate = hotelRates.keySet().stream().min(Long::compare).get();

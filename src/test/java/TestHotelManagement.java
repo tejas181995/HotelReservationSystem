@@ -1,8 +1,10 @@
 import com.bridgelabz.hotelmanagement.Hotel;
 import com.bridgelabz.hotelmanagement.HotelManagement;
+import com.bridgelabz.hotelmanagement.InvalidDataException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 
 import static com.bridgelabz.hotelmanagement.HotelManagement.*;
 
@@ -30,22 +32,33 @@ public class TestHotelManagement {
     }
 
     @Test
-    public void getCheapestHotelByRatesRegular() {
+    public void getCheapestHotelByRatesRegular() throws InvalidDataException {
         Assertions.assertEquals(lakewood, getCheapHotelByRate(Hotel.REGULAR_CUSTOMER));
         showCheapHotel(Hotel.REGULAR_CUSTOMER);
 
     }
 
     @Test
-    public void getCheapestHotelByRatingsRegularTest() {
+    public void getCheapestHotelByRatingsRegularTest() throws InvalidDataException {
         Hotel  cheapestHotelByRatings = HotelManagement.getCheapestHotelByRating(Hotel.REGULAR_CUSTOMER);
         Assertions.assertEquals(bridgewood, cheapestHotelByRatings);
         System.out.println("Cheapest hotel by rating: " + cheapestHotelByRatings.hotelName);
     }
 
     @Test
-    public void getBestRatedHotelRegularTest() {
+    public void getBestRatedHotelRegularTest() throws InvalidDataException {
         Assertions.assertEquals(ridgewood, getBestRatedHotel());
         System.out.println("Best rated Hotel: " + getBestRatedHotel().hotelName + "  total Rate:  "  + getTotalRates(getBestRatedHotel(), Hotel.REGULAR_CUSTOMER) );
+    }
+
+    @Test
+    void getCheapestHotelByrateSpecialTest() throws InvalidDataException {
+        Assertions.assertEquals(lakewood, getCheapHotelByRate(Hotel.LOYAL_CUSTOMER));
+        showCheapHotel(Hotel.LOYAL_CUSTOMER);
+    }
+
+    @Test
+    public void invalidCustomerTypeTest1() throws InvalidDataException {
+        Assertions.assertThrows(InvalidDataException.class, ()->{getCheapHotelByRate(3);} );
     }
 }
