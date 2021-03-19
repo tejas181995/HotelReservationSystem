@@ -67,4 +67,16 @@ public class TestHotelManagement {
         Assertions.assertEquals(ridgewood, getCheapestHotelByRating(Hotel.LOYAL_CUSTOMER));
         showCheapHotel(Hotel.LOYAL_CUSTOMER);
     }
+
+    @Test
+    void cheapestHotelForGivenDateValidation() throws InvalidDataException {
+        Assertions.assertDoesNotThrow(()-> setDate("2020-09-11", "2020-09-12"));
+        Assertions.assertEquals(bridgewood, getCheapestHotelByRating(Hotel.REGULAR_CUSTOMER));
+    }
+
+    @Test
+    void cheapestHotelForGivenDateValidationInvalidInput()  {
+
+        Assertions.assertThrows(InvalidDataException.class ,() ->{setDate("2020-09-11", "2020-13-13");});
+    }
 }

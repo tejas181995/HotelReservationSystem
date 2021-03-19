@@ -74,6 +74,13 @@ public class HotelManagement {
     public static Hotel getBestRatedHotel(){
         return hotels.stream().max((h1, h2 ) -> ((Integer)h1.ratings).compareTo(((Integer)h2.ratings))).get();
     }
+    public static void setDate(String s1, String s2) throws InvalidDataException {
+        String dateFormat = "^([0-9]{4})-(1[0-2]|0[1-9])-(3[01]|[12][0-9]|0[1-9])$";
+        if(!s1.matches(dateFormat) || !s2.matches(dateFormat))
+            throw new InvalidDataException();
+        d1 = LocalDate.parse(s1);
+        d2 = LocalDate.parse(s2);
+    }
 
 
 }
