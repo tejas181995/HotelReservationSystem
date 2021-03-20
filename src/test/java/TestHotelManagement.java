@@ -12,7 +12,8 @@ public class TestHotelManagement {
     HotelManagement hotelManagement;
     Hotel lakewood = new Hotel("Lakewood", 110, 90, 80, 80, 3);
     Hotel bridgewood = new Hotel("Bridgewood", 150, 50, 110, 50, 4);
-    Hotel ridgewood = new Hotel("Ridgewood", 220 , 150, 100, 40, 5);
+    Hotel ridgewood = new Hotel("Ridgewood", 220, 150, 100, 40, 5);
+
     @BeforeEach
     void setUp() {
         hotelManagement = new HotelManagement();
@@ -40,7 +41,7 @@ public class TestHotelManagement {
 
     @Test
     public void getCheapestHotelByRatingsRegularTest() throws InvalidDataException {
-        Hotel  cheapestHotelByRatings = HotelManagement.getCheapestHotelByRating(Hotel.REGULAR_CUSTOMER);
+        Hotel cheapestHotelByRatings = HotelManagement.getCheapestHotelByRating(Hotel.REGULAR_CUSTOMER);
         Assertions.assertEquals(bridgewood, cheapestHotelByRatings);
         System.out.println("Cheapest hotel by rating: " + cheapestHotelByRatings.hotelName);
     }
@@ -48,7 +49,7 @@ public class TestHotelManagement {
     @Test
     public void getBestRatedHotelRegularTest() throws InvalidDataException {
         Assertions.assertEquals(ridgewood, getBestRatedHotel());
-        System.out.println("Best rated Hotel: " + getBestRatedHotel().hotelName + "  total Rate:  "  + getTotalRates(getBestRatedHotel(), Hotel.REGULAR_CUSTOMER) );
+        System.out.println("Best rated Hotel: " + getBestRatedHotel().hotelName + "  total Rate:  " + getTotalRates(getBestRatedHotel(), Hotel.REGULAR_CUSTOMER));
     }
 
     @Test

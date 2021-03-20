@@ -21,20 +21,7 @@ public class HotelManagement {
         return Collections.min(hotels, ((hotel1, hotel2) -> ((Integer) hotel1.weekDayRate[customerType]).compareTo((Integer) hotel2.weekDayRate[customerType])));
     }
     public static long getTotalRates( Hotel hotel, int customerType) throws InvalidDataException {
-        if(d1.compareTo(d2) > 0 || customerType < 0 || customerType >= 2)
-            throw new InvalidDataException();
-        long rate = 0;
-        LocalDate dx = d2;
-        dx = dx.plusDays(1);
-        for(LocalDate date = d1; date.isBefore(dx); date = date.plusDays(1)){
-            String today = DayOfWeek.from(date).name();
-            if(today.equals(DayOfWeek.SATURDAY.toString()) || today.equals(DayOfWeek.SUNDAY.toString()) ) {
-                rate += hotel.weekEndRate[customerType];
-            }else {
-                rate+= hotel.weekDayRate[customerType];
-            }
-        }
-        return rate;
+        return  hotel.getTotalRates(customerType, d1, d2);
     }
     public static TreeMap<Long, ArrayList<Hotel>> weekEndWeekDaysRates(int customerType) throws InvalidDataException {
         if(customerType < 0 || customerType >= 2)
